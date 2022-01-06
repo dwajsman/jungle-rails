@@ -16,7 +16,16 @@ class ApplicationController < ActionController::Base
   helper_method :enhanced_cart
 
   def cart_subtotal_cents
+
+    if enhanced_cart.length == 0
+       puts "cart is empty"
+       @cart_visible = false
+    else
+       @cart_visible = true
+    end
+    
     enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
+    
   end
   helper_method :cart_subtotal_cents
 
