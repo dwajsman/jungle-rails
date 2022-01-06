@@ -11,21 +11,17 @@ class ApplicationController < ActionController::Base
   helper_method :cart
 
   def enhanced_cart
+
+    @cart_count = Product.where(id: cart.keys).count
+
     @enhanced_cart ||= Product.where(id: cart.keys).map {|product| { product:product, quantity: cart[product.id.to_s] } }
   end
   helper_method :enhanced_cart
 
   def cart_subtotal_cents
 
-    if enhanced_cart.length == 0
-       puts "cart is empty"
-       @cart_visible = false
-    else
-       @cart_visible = true
-    end
-    
-    enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum
-    
+
+    enhanced_cart.map {|entry| entry[:product].price_cents * entry[:quantity]}.sum  
   end
   helper_method :cart_subtotal_cents
 
