@@ -1,14 +1,51 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-    <h1>Name<% pp @order %></h1>
+
+    
+    <% pp @order %>
+
+
     <h1>Email <%= @order.email %></h1>
-    <h1><%= humanized_money_with_symbol @order.total_cents / 100 %></h1>
-<% enhanced_cart.each do |item| %>
-          <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
-        <% end %>
+    <h1><%= humanized_money_with_symbol @order.total_cents / 100.0 %></h1>
+
   </header>
+
+
+
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.line_items.each do |item| %>
+          <%= render 'item', product: item.product, quantity: item.quantity.to_i %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+
+
+
+
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
@@ -25,4 +62,16 @@
  created_at: Thu, 06 Jan 2022 20:54:40 UTC +00:00,
  updated_at: Thu, 06 Jan 2022 20:54:40 UTC +00:00,
  stripe_charge_id: "ch_3KF2ypJCMz8Jj8Qe1Q48nSXp",
- email: "kvirani@gmail.com"> %>
+ email: "kvirani@gmail.com"> 
+%>
+
+<%# 
+#<LineItem:0x000000010dd9dda8
+ id: 3,
+ order_id: 3,
+ product_id: 11,
+ quantity: 1,
+ item_price_cents: 98765,
+ total_price_cents: 98765,
+ created_at: Thu, 06 Jan 2022 22:07:41 UTC +00:00,
+ updated_at: Thu, 06 Jan 2022 22:07:41 UTC +00:00> %>
