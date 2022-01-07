@@ -4,8 +4,6 @@ class Admin::DashboardController < ApplicationController
   def show
     @product_count = Product.count
     @category_count = Category.count
-
-    # @product_first = Product.select(:category_id).count(:category_id)
   end
 
 end
