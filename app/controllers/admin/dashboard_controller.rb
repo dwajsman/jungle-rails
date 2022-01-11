@@ -1,5 +1,8 @@
 class Admin::DashboardController < ApplicationController
-  http_basic_authenticate_with name: ENV['USER_AUTH'], password: ENV['PASS_AUTH']
+  # http_basic_authenticate_with name: ENV['USER_AUTH'], password: ENV['PASS_AUTH']
+ 
+  before_filter :authorize
+
 
   def show
     @product_count = Product.count
