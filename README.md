@@ -4,7 +4,10 @@ A mini e-commerce application built with Rails 4.2 for purposes of learning Rail
 
 
 ## Screenshots
+![e-commerce home screen](screenshots/Jungle-home.jpg?raw=true "Home")
+![e-commerce product screen](screenshots/Jungle-product.jpg?raw=true "Product")
 ![e-commerce cart screen](screenshots/Jungle-cart.jpg?raw=true "Cart")
+![e-commerce payment screen](screenshots/Jungle-pay.jpg?raw=true "Payment")
 
 
 
