@@ -39,9 +39,9 @@ RSpec.feature "Visitor navigates to a product page", type: :feature, js: true do
     find('.product-detail')
 
     # commented out b/c it's for debugging only
-    save_and_open_screenshot
-
     expect(page).to have_css '.product-detail', count: 1
+    
+    save_and_open_screenshot
   end
 
 
